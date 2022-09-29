@@ -1,3 +1,7 @@
+:root {
+  --blue: #61bd61;
+  --white: #2F4F4F;
+}
 .flash {
   position:fixed;
   top: 5rem;
@@ -15,9 +19,9 @@
 
   &__message {
     font-size: var(--font-size-s);
-    color: var(--color-white);
+    color: var(--whitee);
     padding: var(--space-xs) var(--space-m);
-    background-color: var(--color-dark);
+    background-color: var( --blue);
     animation: appear-then-fade 4s both;
     border-radius: 999px;
   }
