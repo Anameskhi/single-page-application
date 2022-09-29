@@ -1,8 +1,10 @@
+
 <main class="container">
   <%= link_to sanitize("&larr; Back to quotes"), quotes_path %>
-  <div class="header">
-    <h1>
-      <%= @quote.name %>
-    </h1>
+  <div >
+  <%= turbo_frame_tag @quote do %>
+    <%= render "quote", quote: @quote %>
+  <% end %>
   </div>
+ 
 </main>
