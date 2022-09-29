@@ -8,5 +8,6 @@ class Quote < ApplicationRecord
   after_destroy_commit -> { broadcast_remove_to "quotes" }
   belongs_to :company
   broadcasts_to ->(quote) { [quote.company, "quotes"] }, inserts_by: :prepend
+  has_many :line_item_dates, dependent: :destroy
 
 end
