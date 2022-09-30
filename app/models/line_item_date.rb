@@ -1,11 +1,15 @@
+# frozen_string_literal: true
+
 class LineItemDate < ApplicationRecord
   belongs_to :quote
 
   validates :date, presence: true, uniqueness: { scope: :quote_id }
 
   scope :ordered, -> { order(date: :asc) }
-  
+
+  has_many :line_items, dependent: :destroy
+
   def previous_date
-    quote.line_item_dates.ordered.where("date < ?", date).last
+    quote.line_item_dates.ordered.where('date < ?', date).last
   end
 end
