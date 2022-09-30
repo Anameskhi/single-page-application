@@ -14,4 +14,9 @@ class Quote < ApplicationRecord
   belongs_to :company
   broadcasts_to ->(quote) { [quote.company, 'quotes'] }, inserts_by: :prepend
   has_many :line_item_dates, dependent: :destroy
+  has_many :line_items, through: :line_item_dates
+
+  def total_price
+    line_items.sum(&:total_price)
+  end
 end

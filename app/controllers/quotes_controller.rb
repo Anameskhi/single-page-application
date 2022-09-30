@@ -6,6 +6,7 @@ class QuotesController < ApplicationController
   def index
     @quotes = current_company.quotes.ordered
   end
+
   def show
     @line_item_dates = @quote.line_item_dates.includes(:line_items).ordered
   end
