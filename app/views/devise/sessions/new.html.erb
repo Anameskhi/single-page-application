@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+ <div class = "log-in-form">
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+  <h3 class = "login_text">Log in</h3>
+
+  <%= f.label :Username, { class: "form-label"}%>
+    <%= f.input :email,
+                required: false,
+                autofocus: true,
+                input_html: { autocomplete: "email" } %>
+                
+   <%= f.label :Password, { class: "form-label"}%>
+    <%= f.input :password, 
+                required: false,
+                input_html: { autocomplete: "current-password" } %>
+
+    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+ 
+
+
+     <%= f.submit "Log in", class: "form-submit" %>
+
+     <div class="social">
+          <div class="go"><i class="fab fa-google"></i>  Google</div>
+          <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
+        </div>
+
+<% end %>
+
+<%= render "devise/shared/links" %>
+</div>
